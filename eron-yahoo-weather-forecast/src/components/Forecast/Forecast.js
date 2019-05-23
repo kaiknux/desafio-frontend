@@ -106,44 +106,18 @@ class Forecast extends Component {
         return null
     };
 
+     searchData = async () =>  {
+        // API call
+        let data = await fetch(link);
+        console.log('inside API');
+        const res = await data.json();
+        this.cityAddParameter(res);
+      };
+      
+       cityAddParameter = async (res) =>  {
 
-    searchData = async (index) => {
-                                            console.log(link); // test 1
-            const teste = await fetch(link)
-                                            console.log(teste); // test 2
-            const testeLista = teste['list']
-                                            console.log(testeLista); // test 3
-                                            console.log(teste.list); // test 4 
-            this.cityAddParameter(testeLista);
-    };
-
-    cityAddParameter = (jsonArray) => {
-        console.log(jsonArray);
-    };
-
-    // init = (resultFromServer) => {
-    //     console.log(resultFromServer)
-    //     let newList = [...this.state.cities];
-    //     console.log(newList);
-    //     for (newList[index]) {
-    //         newList[index] = resultFromServer[index]
-    //     }
-    //     console.log(newList[1].main.temp);
-    // };
-
-        // this.findRio(result)
-
-
-    // findRio = (result) => 
-    //     let peace = [...result.list]
-    //     let passJSON = peace.filter( val => val['id'] = 3451190)
-    //     console.log(passJSON);
-    // };
-
-    // teste = ()
-
-
-
+        console.log(res.list[1].id);
+      };
 
     render() {
         let renderedCities = null;
