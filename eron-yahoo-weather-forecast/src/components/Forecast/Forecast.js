@@ -98,32 +98,31 @@ class Forecast extends Component {
     },
 ]};
 
-    organizeItemsHandler = () => {
-        return null
-    }
-
-    initialHandler = (item) => {
-        return null
-    };
-
-     searchData = async () =>  {
+    searchData = async () => {
         // API call
         let data = await fetch(link);
         console.log('inside API');
         const res = await data.json();
-        this.cityAddParameter(res);
-      };
+        this.parseChecker(res);
+    };
       
-       cityAddParameter = async (res) =>  {
-
+    parseChecker = async (res) => {
         console.log(res.list[1].id);
-      };
+        if (res !== undefined) {
+            this.updateFromServer(res);
+        } else { console.log('error, data is undefined') }
+    };
+
+    updateFromServer = (res) => {
+        console.log(cities);
+        console.log(res);
+       res.filter(res.id = 3469058)
+        console.log(res);
+    };
+
 
     render() {
         let renderedCities = null;
-
-
-
 
 
         if (this.state.cities) {
