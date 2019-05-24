@@ -10,7 +10,6 @@ const link = `http://api.openweathermap.org/data/2.5/group?id=${cities[0]},${cit
 
 
 
-
 class Forecast extends Component {
 
     state = {
@@ -98,7 +97,7 @@ class Forecast extends Component {
     },
 ]};
 
-    searchData = async () => {
+    searchData = async () => { 
         // API call
         let data = await fetch(link);
         console.log('inside API');
