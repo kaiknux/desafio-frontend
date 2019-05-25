@@ -11,6 +11,7 @@ const singleCity = (props) => (
         {props.id}--
         {props.name}--
         {props.country}--
+        {props.temp}
     </div>
 );
 
