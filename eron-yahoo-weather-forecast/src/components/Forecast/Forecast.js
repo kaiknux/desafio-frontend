@@ -18,16 +18,18 @@ class Forecast extends Component {
         "id": 3451190,
 <<<<<<< HEAD
         "name": "Rio de ",
+<<<<<<< HEAD
 =======
         "name": "Rio de Janeiro",
         "country": "BR",
 >>>>>>> parent of 7d3fdcb... Added search features
+=======
+        "sys":{"type":1,"id":8166,"message":0.0166,"country":"BR","sunrise":1435610796,"sunset":1435650870},
+>>>>>>> parent of 9ef61a0... Testing wether or not these props will work
         "coord": {
             "lon": -43.2075,
             "lat": -22.902781
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3448439,
         "name": "Sao Paulo",
@@ -35,9 +37,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -46.636108,
             "lat": -23.547501
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3405814,
         "name": "Belo Horizonte",
@@ -45,9 +45,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -36.333328,
             "lat": -9.8
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3469058,
         "name": "Brasilia",
@@ -55,9 +53,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -47.929722,
             "lat": -15.77972
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3405863,
         "name": "Belem",
@@ -65,9 +61,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -35.533329,
             "lat": -6.69167
-               },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+               }
     }, {
         "id": 3450554,
         "name": "Salvador",
@@ -75,9 +69,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -38.51083,
             "lat": -12.97111
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3464975,
         "name": "Curitiba",
@@ -85,9 +77,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -49.27306,
             "lat": -25.42778
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 6320062,
         "name": "Fortaleza",
@@ -95,9 +85,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -38.524651,
             "lat": -3.72271
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3663517,
         "name": "Manaus",
@@ -105,9 +93,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -60.025002,
             "lat": -3.10194
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3397277,
         "name": "Joao Pessoa",
@@ -115,9 +101,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -34.86306,
             "lat": -7.115
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     },
 ]};
 
@@ -146,6 +130,7 @@ class Forecast extends Component {
 
     render() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         let renderedCities = null;
 
@@ -158,23 +143,37 @@ class Forecast extends Component {
                                 name={city.name}
                                 id={city.id}
                                 country={city.country}/>
+=======
+        let renderedCities = null;
+
+        if (this.state.cities) {
+            renderedCities = (
+                <div>
+                    {this.state.cities.map((city, index) => { 
+                                                            console.log('console.log city dentro do map');
+                                                            // console.log(city.sys.country); -> bugado, não funciona
+                                                            console.log(city.sys);
+                                                            console.log(city);
+                        return <div>
+                        <SingleCity
+                                name={city.name}
+                                id={city.id}/>
+                        </div>
+>>>>>>> parent of 9ef61a0... Testing wether or not these props will work
                     })
                     }
                 </div>
             );
         };
 
+<<<<<<< HEAD
 >>>>>>> parent of 7d3fdcb... Added search features
+=======
+>>>>>>> parent of 9ef61a0... Testing wether or not these props will work
 
         return (
             <div>
-                        <SingleCity
-                                name={this.state.cities[0].name}
-                                id={this.state.cities[0].id}
-                                country={this.state.cities[0].sys.country}
-                                temp={this.state.cities[0].main.temp}
-                                />
-                        
+            {renderedCities}
             <button onClick={this.searchData}>Atualizar</button>
             <button onClick={this.teste}>Verificar</button>
 
