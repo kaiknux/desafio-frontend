@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import SingleCity from './SingleCity/SingleCity';
 
+import { WEATHER_KEY } from '../Keys';
+
 const cities = [
     3451190, 3448439, 3405814, 3469058, 3405863, 3450554, 3464975, 6320062, 3663517, 3397277,
 ];
-const myKey = '200f283586f507e8c77b876afa998b97';
 const units = 'metric';
-const link = `http://api.openweathermap.org/data/2.5/group?id=${cities[0]},${cities[1]},${cities[2]},${cities[3]},${cities[4]},${cities[5]},${cities[6]},${cities[7]},${cities[8]},${cities[9]}&APPID=${myKey}&units=${units}`
+const link = `http://api.openweathermap.org/data/2.5/group?id=${cities[0]},${cities[1]},${cities[2]},${cities[3]},${cities[4]},${cities[5]},${cities[6]},${cities[7]},${cities[8]},${cities[9]}&APPID=${WEATHER_KEY}&units=${units}`
 
 
 
@@ -16,8 +17,8 @@ class Forecast extends Component {
      cities: [
         {
         "id": 3451190,
-        "name": "Rio de Janeiro",
-        "country": "BR",
+        "name": "Rio de ",
+        "sys":{"type":1,"id":8166,"message":0.0166,"country":"BR","sunrise":1435610796,"sunset":1435650870},
         "coord": {
             "lon": -43.2075,
             "lat": -22.902781
@@ -100,38 +101,51 @@ class Forecast extends Component {
     searchData = async () => { 
         // API call
         let data = await fetch(link);
-        console.log('inside API');
+                                                            console.log('inside API');
         const res = await data.json();
         this.parseChecker(res);
     };
-      
+    
+    cityAdaptation = (updatedArray) => {
+        const amor = updatedArray.main
+        return amor;
+    };
+
     parseChecker = async (res) => {
-        console.log(res.list[1].id);
         if (res !== undefined) {
             this.updateFromServer(res);
         } else { console.log('error, data is undefined') }
     };
 
     updateFromServer = (res) => {
-        console.log(cities);
-        console.log(res);
-       res.filter(res.id = 3469058)
-        console.log(res);
+        let transitionObject = [...res.list]
+        const updatedArray = transitionObject.filter(function(city) {
+            return cities.indexOf(city);
+          });
+                                                            // console.log(updatedArray);
+          this.setState({cities: updatedArray});
+                                                            // console.log(this.state.cities[1].sys.country);
     };
+
+    
 
 
     render() {
         let renderedCities = null;
 
-
         if (this.state.cities) {
             renderedCities = (
                 <div>
-                    {this.state.cities.map((city, index) => {
-                        return <SingleCity
+                    {this.state.cities.map((city, index) => { 
+                                                            console.log('console.log city dentro do map');
+                                                            // console.log(city.sys.country); -> bugado, não funciona
+                                                            console.log(city.sys);
+                                                            console.log(city);
+                        return <div>
+                        <SingleCity
                                 name={city.name}
-                                id={city.id}
-                                country={city.country}/>
+                                id={city.id}/>
+                        </div>
                     })
                     }
                 </div>

@@ -8,9 +8,9 @@ const singleCity = (props) => (
 // }  
 
     <div>
-        {props.id}
-        {props.name}
-        {props.country}
+        {props.id}--
+        {props.name}--
+        {props.country}--
     </div>
 );
 
