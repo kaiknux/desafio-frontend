@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import SingleCity from './SingleCity/SingleCity';
 
+import { WEATHER_KEY } from '../Keys';
+
 const cities = [
     3451190, 3448439, 3405814, 3469058, 3405863, 3450554, 3464975, 6320062, 3663517, 3397277,
 ];
-const myKey = '200f283586f507e8c77b876afa998b97';
 const units = 'metric';
-const link = `http://api.openweathermap.org/data/2.5/group?id=${cities[0]},${cities[1]},${cities[2]},${cities[3]},${cities[4]},${cities[5]},${cities[6]},${cities[7]},${cities[8]},${cities[9]}&APPID=${myKey}&units=${units}`
+const link = `http://api.openweathermap.org/data/2.5/group?id=${cities[0]},${cities[1]},${cities[2]},${cities[3]},${cities[4]},${cities[5]},${cities[6]},${cities[7]},${cities[8]},${cities[9]}&APPID=${WEATHER_KEY}&units=${units}`
 
 
 
@@ -16,18 +17,12 @@ class Forecast extends Component {
      cities: [
         {
         "id": 3451190,
-<<<<<<< HEAD
         "name": "Rio de ",
-=======
-        "name": "Rio de Janeiro",
-        "country": "BR",
->>>>>>> parent of 7d3fdcb... Added search features
+        "sys":{"type":1,"id":8166,"message":0.0166,"country":"BR","sunrise":1435610796,"sunset":1435650870},
         "coord": {
             "lon": -43.2075,
             "lat": -22.902781
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3448439,
         "name": "Sao Paulo",
@@ -35,9 +30,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -46.636108,
             "lat": -23.547501
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3405814,
         "name": "Belo Horizonte",
@@ -45,9 +38,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -36.333328,
             "lat": -9.8
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3469058,
         "name": "Brasilia",
@@ -55,9 +46,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -47.929722,
             "lat": -15.77972
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3405863,
         "name": "Belem",
@@ -65,9 +54,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -35.533329,
             "lat": -6.69167
-               },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+               }
     }, {
         "id": 3450554,
         "name": "Salvador",
@@ -75,9 +62,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -38.51083,
             "lat": -12.97111
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3464975,
         "name": "Curitiba",
@@ -85,9 +70,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -49.27306,
             "lat": -25.42778
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 6320062,
         "name": "Fortaleza",
@@ -95,9 +78,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -38.524651,
             "lat": -3.72271
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3663517,
         "name": "Manaus",
@@ -105,9 +86,7 @@ class Forecast extends Component {
         "coord": {
             "lon": -60.025002,
             "lat": -3.10194
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     }, {
         "id": 3397277,
         "name": "Joao Pessoa",
@@ -115,66 +94,68 @@ class Forecast extends Component {
         "coord": {
             "lon": -34.86306,
             "lat": -7.115
-                },
-        "main": { "temp": null},
-        "sys": {"country": "BR"}
+                }
     },
 ]};
 
     searchData = async () => { 
         // API call
         let data = await fetch(link);
-        console.log('inside API');
+                                                            console.log('inside API');
         const res = await data.json();
         this.parseChecker(res);
     };
-      
+    
+    cityAdaptation = (updatedArray) => {
+        const amor = updatedArray.main
+        return amor;
+    };
+
     parseChecker = async (res) => {
-        console.log(res.list[1].id);
         if (res !== undefined) {
             this.updateFromServer(res);
         } else { console.log('error, data is undefined') }
     };
 
     updateFromServer = (res) => {
-        console.log(cities);
-        console.log(res);
-       res.filter(res.id = 3469058)
-        console.log(res);
+        let transitionObject = [...res.list]
+        const updatedArray = transitionObject.filter(function(city) {
+            return cities.indexOf(city);
+          });
+                                                            // console.log(updatedArray);
+          this.setState({cities: updatedArray});
+                                                            // console.log(this.state.cities[1].sys.country);
     };
+
+    
 
 
     render() {
-<<<<<<< HEAD
-=======
         let renderedCities = null;
-
 
         if (this.state.cities) {
             renderedCities = (
                 <div>
-                    {this.state.cities.map((city, index) => {
-                        return <SingleCity
+                    {this.state.cities.map((city, index) => { 
+                                                            console.log('console.log city dentro do map');
+                                                            // console.log(city.sys.country); -> bugado, não funciona
+                                                            console.log(city.sys);
+                                                            console.log(city);
+                        return <div>
+                        <SingleCity
                                 name={city.name}
-                                id={city.id}
-                                country={city.country}/>
+                                id={city.id}/>
+                        </div>
                     })
                     }
                 </div>
             );
         };
 
->>>>>>> parent of 7d3fdcb... Added search features
 
         return (
             <div>
-                        <SingleCity
-                                name={this.state.cities[0].name}
-                                id={this.state.cities[0].id}
-                                country={this.state.cities[0].sys.country}
-                                temp={this.state.cities[0].main.temp}
-                                />
-                        
+            {renderedCities}
             <button onClick={this.searchData}>Atualizar</button>
             <button onClick={this.teste}>Verificar</button>
 
