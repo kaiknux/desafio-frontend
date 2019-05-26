@@ -8,10 +8,16 @@ const singleCity = (props) => (
 // }  
 
     <div>
+<<<<<<< HEAD
         {props.id}--
         {props.name}--
         {props.country}--
         {props.temp}
+=======
+        {props.id}
+        {props.name}
+        {props.country}
+>>>>>>> parent of 7d3fdcb... Added search features
     </div>
 );
 
