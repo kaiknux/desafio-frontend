@@ -1,18 +1,15 @@
 import React from 'react';
+import classes from '../SingleCity/SingleCity.css';
 
 const singleCity = (props) => (
 
 
-// if (transformedIngredients.length === 0) {
-//     transformedIngredients = <p>Por favor! Insira ingredientes!</p>;
-// }  
-
-    <div className='Container'>
-        <div className="Minmax">{props.tempmin}</div>
-        <div className="Minmax">{props.tempmax}</div>
-        <div className="Divname">{props.name}</div>
+    <div className={classes.Citybox}>
+        <div className={classes.Minmax}>{props.tempmax}°</div>
+        <div className={classes.Minmax}>{props.tempmin}°</div>
+        <div className={classes.Divname}>{props.name}</div>
     </div>
 );
 
 
-export default singleCity;
+export default singleCity

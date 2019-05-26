@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SingleCity from './SingleCity/SingleCity';
-
+import classes from '../Forecast/Forecast.css';
 import { WEATHER_KEY } from '../Keys';
 
 const cities = [
@@ -49,15 +49,8 @@ class Forecast extends Component {
     searchData = async () => { 
         // API call
         let data = await fetch(link);
-                                                            console.log('inside API');
-                                                            console.log(link);
         const res = await data.json();
         this.parseChecker(res);
-    };
-    
-    cityAdaptation = (updatedArray) => {
-        const amor = updatedArray.main
-        return amor;
     };
 
     parseChecker = async (res) => {
@@ -82,8 +75,12 @@ class Forecast extends Component {
     render() {
 
         return (
-            <div>
-                <p>min - max</p>
+            
+            <div className={classes.Citiesapp}>
+                <div className={classes.Title}>Capitais</div>
+                <div className={classes.Area1}>
+                <div className={classes.Minmax}>Min</div><div className={classes.Minmax}>Máx</div>
+                </div>
                 <SingleCity name={this.state.cities[0].name}
                             tempmin={this.state.cities[0].main.temp_min}
                             tempmax={this.state.cities[0].main.temp_max}
@@ -125,7 +122,6 @@ class Forecast extends Component {
                             tempmax={this.state.cities[9].main.temp_max}
                             />
             <button onClick={this.searchData}>Atualizar</button>
-            <button onClick={this.teste}>Verificar</button>
 
             </div>
             
@@ -135,17 +131,3 @@ class Forecast extends Component {
 };
 
 export default Forecast;
-
-// RIO DE JANEIRO       3451190
-// SÃO PAULO            3448439
-// BELO HORIZONTE       3405814
-// BRASÍLIA             3469058
-// BELÉM                3405863
-
-// SALVADOR             3450554
-// CURITIBA             3464975
-// FORTALEZA            6320062
-// MANAUS               3663517
-// JOÃO PESSOA          3397277
-
-//MY KEY 200f283586f507e8c77b876afa998b97

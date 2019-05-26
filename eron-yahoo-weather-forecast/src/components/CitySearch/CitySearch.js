@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import WeatherForm from './WeatherForm/WeatherForm';
 import WeatherInfo from './WeatherInfo/WeatherInfo';
 
-import { WEATHER_KEY } from '../Keys'
+import { WEATHER_KEY } from '../Keys';
+import classes from '../CitySearch/CitySearch.css';
+
 
 class App extends Component {
 
@@ -48,7 +50,7 @@ class App extends Component {
     }
 
     render() {
-        return <div className="container p-4">
+        return <div className={classes.SearchAppContainer}>
             <div className="row">
                 <div className="col-md-6 mx-auto">
                     <WeatherForm

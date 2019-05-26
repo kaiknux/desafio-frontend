@@ -1,0 +1,17 @@
+.SearchAppContainer {
+    margin: auto;
+    width: 499px;
+    text-align: left;
+    padding: 0px 30px;
+    border-bottom: 2px;
+    border-color: white;
+
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff9400+0,ffbb00+100 */
+background: #ff9400; /* Old browsers */
+background: -moz-linear-gradient(top,  #ff9400 0%, #ffbb00 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #ff9400 0%,#ffbb00 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #ff9400 0%,#ffbb00 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9400', endColorstr='#ffbb00',GradientType=0 ); /* IE6-9 */
+
+};
+

@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
+import classes from './App.css';
 import Forecast from './components/Forecast/Forecast';
 import CitySearch from './components/CitySearch/CitySearch';
 
 function App() {
   return (
-    <div className="App">
+    <div className={classes.App}>
       <CitySearch/>
       <Forecast/>
     </div>
