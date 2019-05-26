@@ -7,10 +7,10 @@ const singleCity = (props) => (
 //     transformedIngredients = <p>Por favor! Insira ingredientes!</p>;
 // }  
 
-    <div>
-        {props.id}--
-        {props.name}--
-        {props.country}--
+    <div className='Container'>
+        <div className="Minmax">{props.tempmin}</div>
+        <div className="Minmax">{props.tempmax}</div>
+        <div className="Divname">{props.name}</div>
     </div>
 );
 

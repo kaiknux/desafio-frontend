@@ -19,9 +19,9 @@ class App extends Component {
 
     getWeather = async (e) => {
         e.preventDefault();
-        const { city, country } = e.target.elements;
+        const { city } = e.target.elements;
         const cityValue = city.value;
-        const countryValue = country.value;
+        const countryValue = 'Brazil';
 
         if (cityValue && countryValue) {
             // metric parameter is for Celcius Unit
