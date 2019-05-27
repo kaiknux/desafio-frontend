@@ -16,7 +16,9 @@ class App extends Component {
         wind_speed: 0,
         city: '',
         country: '',
-        error: null
+        error: null,
+        temp_max: '',
+        temp_min: '',
     };
 
     getWeather = async (e) => {
@@ -39,11 +41,13 @@ class App extends Component {
                 wind_speed: data.wind.speed,
                 city: data.name,
                 country: data.sys.country,
-                error: null
+                error: null,
+                temp_max: data.main.temp_max,
+                temp_min: data.main.temp_min
             });
         } else {
             this.setState({
-                error: 'Please enter a City and a Country.'
+                error: 'Por favor insira o nome de uma cidade.'
             });
         }
 

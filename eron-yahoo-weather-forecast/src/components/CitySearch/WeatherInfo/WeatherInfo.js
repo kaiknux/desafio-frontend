@@ -1,20 +1,22 @@
 import React from 'react';
 
+import classes from '../WeatherInfo/WeatherInfo.css';
+
 const WeatherInfo = props => {
     console.log(props)
     return (
         <div>
             {
                 props.error &&
-                <div className="alert alert-danger">
+                <div className={classes.alertdanger}>
                     <p>{props.error}</p>
                 </div>
             }
             {props.temperature ?
-                <div className="card card-body mt-2 animated fadeInUp" >
+                <div className={classes.InfoContainer} >
                     {
                         props.city && props.country &&
-                        <p><i className="fas fa-location-arrow"></i> Location: {props.city}, {props.country}</p>
+                        <p><i className="fas fa-location-arrow"></i> Location: {props.city}, Brasil</p>
                     }
                     {
                         props.temperature &&
@@ -40,3 +42,5 @@ const WeatherInfo = props => {
 }
 
 export default WeatherInfo;
+
+//fff3e4
