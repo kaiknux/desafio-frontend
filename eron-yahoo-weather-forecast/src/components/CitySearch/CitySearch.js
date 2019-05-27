@@ -51,6 +51,7 @@ class App extends Component {
 
     render() {
         return <div className={classes.SearchAppContainer}>
+            <div classname={classes.TitleCitySearch}>Previsão do Tempo</div>
             <div className="row">
                 <div className="col-md-6 mx-auto">
                     <WeatherForm

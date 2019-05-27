@@ -1,3 +1,12 @@
+# Nota do desenvolvedor
+
+A API Yahoo Weather tem a mesma disponibilidade tal qual existia quando foi proposto o desafio. Foi optado então pelo desenvolvimento do desafio com o Open Weather .com. Com isso não será possível buscar previsão dos 3 dias seguintes (dado ausente na API) - como é descrito na proposta do exercício.
+
+Obrigado,
+
+Eron
+
+
 # Desafio-Frontend
 
 ![alt tag](https://s3-us-west-1.amazonaws.com/1sti/1sti-transformacao.png)
